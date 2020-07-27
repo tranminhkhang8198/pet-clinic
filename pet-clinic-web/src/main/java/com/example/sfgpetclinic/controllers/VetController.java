@@ -16,13 +16,6 @@ public class VetController {
 
    @RequestMapping({"/vets", "/vets/index", "/vets/index.html", "vets.html"})
    public String listOfVets(Model model) {
-      Vet vet3 = new Vet();
-      vet3.setId(1L);
-      vet3.setFirstName("Sam");
-      vet3.setLastName("Axe");
-
-      vetService.save(vet3);
-
       model.addAttribute("vets", vetService.findAll());
       return "vets/index";
    }
