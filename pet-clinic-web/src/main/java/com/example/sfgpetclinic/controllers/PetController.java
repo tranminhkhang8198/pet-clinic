@@ -64,12 +64,15 @@ public class PetController {
         }
 
         owner.getPets().add(pet);
+
+        System.out.println(ownerService.findById(owner.getId()).getPets().size());
         if (result.hasErrors()) {
             model.addAttribute("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
             petService.save(pet);
-            return "redirect:/owners/{ownerId}";
+
+            return "redirect:/owners/" + owner.getId();
         }
     }
 
